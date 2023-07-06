@@ -6,14 +6,14 @@
 }
 
 body {
-    background-color: #001e4d;
+    background: linear-gradient(to right, #64b3f4, #c2e59c);
 }
 
 .app {
     background-color: #fff;
     width: 90%;
     max-width: 600px;
-    margin: 100px auto 0;
+    margin: 200px auto 0;
     border-radius: 10px;
     padding: 30px;
 
@@ -69,5 +69,5 @@ body {
     margin: 20px auto 0;
     border-radius: 4px;
     cursor: pointer;
-    display: none;
+    display: block;
 }
