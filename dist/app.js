@@ -53,6 +53,7 @@ const questions = [
 ]
 
 let nextQuestion = 0;
+let correctAnswers = 0;
 
 function showQuestion() {
     const question = questions[nextQuestion];
@@ -64,7 +65,33 @@ function showQuestion() {
     });
 };
 
+
+function checkAnswer(e) {
+    const selectedButton = e.target;
+    const question = questions[nextQuestion];
+
+    const correctAnswer = question.answers.find(answer => answer.correct);
+
+    if (selectedButton.textContent === correctAnswer.text) {
+        correctAnswers++
+    }
+
+    nextQuestion++;
+    if (nextQuestion < questions.length) {
+        showQuestion();
+    } else {
+        questionDOM.innerHTML = 'Quiz tamamlandı!';
+        answerbtnDOM.innerHTML = `${correctAnswers}  / ${questions.length} `;
+        nextBtn.style.display = 'none';
+    }
+}
+
 showQuestion();
+
+btnDOM.forEach((btn) => {
+    btn.addEventListener('click', checkAnswer);
+});
+
 
 
 nextBtn.addEventListener('click', () => {
@@ -72,9 +99,8 @@ nextBtn.addEventListener('click', () => {
     if (nextQuestion < questions.length) {
         showQuestion();
     } else {
-        questionDOM.innerHTML = 'Quiz tamamlandı!';
-        answerbtnDOM.innerHTML = '';
+        questionDOM.innerHTML = 'Quiz Completed!';
+        answerbtnDOM.innerHTML = `${correctAnswers}  / ${questions.length} `;
         nextBtn.style.display = 'none';
     }
-
 });
