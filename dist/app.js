@@ -42,6 +42,7 @@ const questions = [
         ]
     },
     {
+        id: 4,
         question: 'Which historical city in Turkey is known as the "City of Troy"?',
         answers: [
             { text: 'Çanakkale ', correct: true },
@@ -66,31 +67,32 @@ function showQuestion() {
 };
 
 
-function checkAnswer(e) {
-    const selectedButton = e.target;
-    const question = questions[nextQuestion];
+// function checkAnswer(e) {
+//     const selectedButton = e.target;
+//     const question = questions[nextQuestion];
 
-    const correctAnswer = question.answers.find(answer => answer.correct);
+//     const correctAnswer = question.answers.find(answer => answer.correct);
 
-    if (selectedButton.textContent === correctAnswer.text) {
-        correctAnswers++
-    }
+//     if (selectedButton.textContent === correctAnswer.text) {
+//         correctAnswers++
+//     }
 
-    nextQuestion++;
-    if (nextQuestion < questions.length) {
-        showQuestion();
-    } else {
-        questionDOM.innerHTML = 'Quiz tamamlandı!';
-        answerbtnDOM.innerHTML = `${correctAnswers}  / ${questions.length} `;
-        nextBtn.style.display = 'none';
-    }
-}
+//     nextQuestion++;
+//     if (nextQuestion < questions.length) {
+//         showQuestion();
+//     } else {
+//         questionDOM.innerHTML = 'Quiz tamamlandı!';
+//         answerbtnDOM.innerHTML = `${correctAnswers}  / ${questions.length} `;
+//         nextBtn.style.display = 'none';
+//     }
+// }
 
 showQuestion();
 
-btnDOM.forEach((btn) => {
-    btn.addEventListener('click', checkAnswer);
-});
+// btnDOM.forEach((btn) => {
+//     btn.addEventListener('click', checkAnswer);
+// });
+
 
 
 
