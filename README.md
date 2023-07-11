@@ -13,6 +13,7 @@ Overview:
 
 git clone https://github.com/mertcetiin/SimpleQuiz-DiscoverTurkey.git
 
+npm run sass
 
 # Starting project
 
