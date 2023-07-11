@@ -4,8 +4,10 @@ const questionDOM = document.getElementById('question');
 const answerbtnDOM = document.getElementById('answer-buttons');
 
 
+
 const questions = [
     {
+        id: 1,
         question: "What is the capital city of Turkey?",
         answers: [
             { text: 'Adana', correct: false },
@@ -15,6 +17,7 @@ const questions = [
         ]
     },
     {
+        id: 2,
         question: 'Which continent is Turkey located in?',
         answers: [
             { text: 'Antarctica ', correct: false },
@@ -24,6 +27,7 @@ const questions = [
         ]
     },
     {
+        id: 3,
         question: 'Who is the founder of the Republic of Turkey?',
         answers: [
             { text: 'İsmet İnönü', correct: false },
@@ -33,6 +37,7 @@ const questions = [
         ]
     },
     {
+        id: 4,
         question: 'What is the official language of Turkey?',
         answers: [
             { text: 'Arabic ', correct: false },
@@ -42,7 +47,7 @@ const questions = [
         ]
     },
     {
-        id: 4,
+        id: 5,
         question: 'Which historical city in Turkey is known as the "City of Troy"?',
         answers: [
             { text: 'Çanakkale ', correct: true },
@@ -62,39 +67,26 @@ function showQuestion() {
 
     answerbtnDOM.innerHTML = '';
     question.answers.forEach((answer) => {
-        answerbtnDOM.innerHTML += `<button class="btn">${answer.text}</button>`
+        const button = document.createElement('button');
+        button.classList.add('btn');
+        button.innerText = answer.text;
+        button.addEventListener('click', () => {
+            if (answer.correct) {
+                button.disabled = true
+                checkAnswer(answer.correct)
+            }
+        });
+        answerbtnDOM.append(button);
     });
 };
 
 
-// function checkAnswer(e) {
-//     const selectedButton = e.target;
-//     const question = questions[nextQuestion];
+function checkAnswer() {
+    correctAnswers++
+}
 
-//     const correctAnswer = question.answers.find(answer => answer.correct);
-
-//     if (selectedButton.textContent === correctAnswer.text) {
-//         correctAnswers++
-//     }
-
-//     nextQuestion++;
-//     if (nextQuestion < questions.length) {
-//         showQuestion();
-//     } else {
-//         questionDOM.innerHTML = 'Quiz tamamlandı!';
-//         answerbtnDOM.innerHTML = `${correctAnswers}  / ${questions.length} `;
-//         nextBtn.style.display = 'none';
-//     }
-// }
 
 showQuestion();
-
-// btnDOM.forEach((btn) => {
-//     btn.addEventListener('click', checkAnswer);
-// });
-
-
-
 
 nextBtn.addEventListener('click', () => {
     nextQuestion++;
